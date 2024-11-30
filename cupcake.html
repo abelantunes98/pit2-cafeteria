@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupcake</title>
+    <link rel="stylesheet" href="cupcake.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const LOCAL_STORAGE_KEY = "carrinho";
+
+            // Obtém os produtos do carrinho
+            function obterCarrinho() {
+                return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+            }
+
+            // Salva os produtos no carrinho
+            function salvarCarrinho(carrinho) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(carrinho));
+            }
+
+            // Adiciona um produto ao carrinho
+            function adicionarAoCarrinho(produto) {
+                const carrinho = obterCarrinho();
+
+                // Verifica se o produto já está no carrinho
+                const produtoExistente = carrinho.find(item => item.id === produto.id);
+                if (produtoExistente) {
+                    produtoExistente.quantidade += 1;
+                } else {
+                    carrinho.push({ ...produto, quantidade: 1 });
+                }
+
+                salvarCarrinho(carrinho);
+                alert("Produto adicionado ao carrinho!");
+                // Redireciona para a página carrinho.html
+                window.location.href = 'carrinho.html';
+            }
+
+            // Evento de clique nos botões "Adicionar ao Carrinho"
+            document.querySelectorAll(".add-to-cart").forEach(botao => {
+                botao.addEventListener("click", () => {
+                    const produtoElement = botao.parentElement;
+                    const produto = {
+                        id: produtoElement.dataset.id,
+                        nome: produtoElement.dataset.nome,
+                        preco: parseFloat(produtoElement.dataset.preco),
+                    };
+
+                    adicionarAoCarrinho(produto);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="button-container">
+        <a href="cupcake.html">
+            <button class="btn">Cupcake</button>
+        </a>
+        <a href="produtos.html">
+            <button class="btn">Cafés</button>
+        </a>
+    </div>
+    <div class="container">
+
+        <div class="menu">
+            <!-- Produto 1 -->
+            <div class="item" data-id="1" data-nome="Maça e Canela" data-preco="15.00">
+                <img src="img/maça e canela.jpg" alt="Maça e Canela">
+                <p>Maça e Canela</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 2 -->
+            <div class="item" data-id="2" data-nome="Nozes" data-preco="20.00">
+                <img src="img/nozes.jpg" alt="Nozes">
+                <p>Nozes</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 3 -->
+            <div class="item" data-id="3" data-nome="Café" data-preco="18.00">
+                <img src="img/cafe.jpg" alt="Café">
+                <p>Café</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 4 -->
+            <div class="item" data-id="4" data-nome="Coco" data-preco="12.00">
+                <img src="img/coco.jpg" alt="Coco">
+                <p>Coco</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 5 -->
+            <div class="item" data-id="5" data-nome="Paçoca" data-preco="10.00">
+                <img src="img/paçoca.jpg" alt="Paçoca">
+                <p>Paçoca</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 6 -->
+            <div class="item" data-id="6" data-nome="Bluberry" data-preco="25.00">
+                <img src="img/bluberry.jpg" alt="Bluberry">
+                <p>Bluberry</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="carrinho.css">
+    <script>
+        // Função para exibir o alerta de compra com sucesso
+        function finalizarCompra() {
+            alert("Compra feita com sucesso!");
+            // Opcional: Redireciona para uma página de confirmação ou agradecimento
+            window.location.href = "confirmacao.html"; // Redireciona para a página de confirmação
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const LOCAL_STORAGE_KEY = "carrinho";
+
+            // Obtém os produtos do carrinho
+            function obterCarrinho() {
+                return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+            }
+
+            // Exibe os produtos no carrinho
+            function exibirCarrinho() {
+                const carrinho = obterCarrinho();
+                const carrinhoContainer = document.getElementById("carrinho-container");
+                const totalElement = document.getElementById("total");
+
+                if (carrinho.length === 0) {
+                    carrinhoContainer.innerHTML = "<p>O carrinho está vazio.</p>";
+                    totalElement.innerHTML = "R$ 0,00";
+                } else {
+                    // Exibe os itens no carrinho
+                    carrinhoContainer.innerHTML = "<ul>" + carrinho.map(item => 
+                        `<li>${item.nome} - R$ ${item.preco.toFixed(2)} x ${item.quantidade} = R$ ${(item.preco * item.quantidade).toFixed(2)}</li>`
+                    ).join('') + "</ul>";
+
+                    // Calcula o total
+                    const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+                    totalElement.innerHTML = `R$ ${total.toFixed(2)}`;
+                }
+            }
+
+            // Função para limpar o carrinho
+            function limparCarrinho() {
+                localStorage.removeItem(LOCAL_STORAGE_KEY);
+                exibirCarrinho(); // Atualiza a exibição após limpar
+            }
+
+            // Adiciona evento de clique para o botão de limpar carrinho
+            document.getElementById("limpar-carrinho").addEventListener("click", limparCarrinho);
+
+            // Exibe o carrinho inicialmente
+            exibirCarrinho();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Carrinho de Compras</h1>
+        <div id="carrinho-container"></div>
+        <p><strong>Total:</strong> <span id="total">R$ 0,00</span></p>
+
+        <!-- Botão para limpar o carrinho -->
+        <button id="limpar-carrinho">Limpar Carrinho</button>
+
+        <!-- Botão para continuar para a página de produtos -->
+        <div class="continue-button">
+            <a href="produtos.html">
+                <button id="continuarBtn">Continuar Comprando</button>
+            </a>
+        </div>
+
+        <!-- Botão para finalizar a compra -->
+        <div class="finalizar-compra-button">
+            <a href="sucesso.html" onclick="finalizarCompra()"> <!-- Chama a função finalizarCompra() -->
+                <button id="finalizarCompraBtn">Finalizar Compra</button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

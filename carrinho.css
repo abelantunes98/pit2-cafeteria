@@ -1,0 +1,201 @@
+/* Estilo base da página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #b18c72;
+    background-image: url('img/cafecaindo.png');
+}
+
+/* Container principal */
+.container {
+    width: 80%;
+    margin: 200px auto;
+    background-color: rgba(139, 104, 104, 0.692); /* Branco com 80% de opacidade */
+    padding: 20px;
+    box-shadow: 0 8px 14px rgba(253, 251, 251, 0.1);
+    border-radius: 8px;
+}
+
+/* Título da página */
+h1 {
+    text-align: center;
+    color: #eee7e7;
+    margin-bottom: 20px;
+}
+
+/* Lista de produtos no carrinho */
+#carrinho-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para cada item no carrinho */
+#carrinho-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#carrinho-container li:last-child {
+    border-bottom: none;
+}
+
+/* Nome e preço do produto */
+#carrinho-container li span {
+    font-size: 16px;
+    color: #f1eeee;
+}
+
+#carrinho-container li .item-nome {
+    font-weight: bold;
+}
+
+#carrinho-container li .item-preco,
+#carrinho-container li .item-quantidade,
+#carrinho-container li .item-total {
+    color: #f3eded;
+}
+
+/* Estilo para o total */
+p#total {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+    color: #f1eded;
+}
+
+/* Botões de ação */
+
+/* Efeito de hover no botão */
+
+/* Adicionando um estilo de navegação */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #carrinho-container li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #carrinho-container li span {
+        margin: 5px 0;
+    }
+
+    p#total {
+        font-size: 18px;
+    }
+}
+#limpar-carrinho {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0a0a0a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#limpar-carrinho:hover {
+    background-color: #c9302c;
+}
+/* Estilização para o botão de "Continuar Comprando" */
+.continue-button {
+    text-align: center; /* Centraliza o botão na página */
+    margin-top: 30px;  /* Dá um espaço entre os elementos acima e o botão */
+}
+
+#continuarBtn {
+
+    color: #161313;  /* Cor do texto branca */
+    font-size: 18px;  /* Aumentando o tamanho da fonte */
+    padding: 12px 25px;  /* Tamanho do botão */
+    border-radius: 8px;  /* Bordas arredondadas */
+    border: none;  /* Remove a borda padrão */
+    cursor: pointer;  /* Indica que é clicável */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animação de transição */
+    text-decoration: none; /* Remove underline se houver */
+}
+
+/* Estilos para o botão de finalizar compra */
+.finalizar-compra-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#finalizarCompraBtn {
+    background-color: #f3f5f3; /* Cor verde */
+    color: rgb(15, 13, 13);
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 12px rgba(160, 147, 147, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#finalizarCompraBtn:hover {
+    background-color: #f0f5f0; /* Cor um pouco mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+#finalizarCompraBtn:active {
+    background-color: #f6faf6; /* Cor quando o botão é pressionado */
+    transform: scale(1);
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilos responsivos para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+    #finalizarCompraBtn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+
+/* Efeito ao passar o mouse sobre o botão */
+
+
+/* Efeito de foco */
+
+
+/* Adicionando responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    #continuarBtn {
+        font-size: 16px;  /* Tamanho menor da fonte em telas pequenas */
+        padding: 10px 20px;  /* Tamanho do botão um pouco menor */
+    }
+}

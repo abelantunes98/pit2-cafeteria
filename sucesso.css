@@ -1,0 +1,60 @@
+/* Estilos para a tela de sucesso */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cafe-image {
+    width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .cafe-image {
+        width: 120px; /* Ajuste a largura para telas menores */
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}

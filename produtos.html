@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafés Quentes</title>
+    <link rel="stylesheet" href="produtos.css">
+</head>
+
+<body>
+    <!-- Botões de navegação -->
+    <div class="button-container">
+        <a href="cupcake.html">
+            <button class="btn">Cupcake</button>
+        </a>
+        <a href="produtos.html">
+            <button class="btn">Cafés</button>
+        </a>
+    </div>
+    
+    <!-- Conteúdo da página de Cafés -->
+    <div class="container">
+        <h1>Cafés Quentes</h1>
+        <div class="menu">
+            <!-- Produto 1 -->
+            <div class="item" data-id="1" data-nome="Café Forte" data-preco="15.00">
+                <img src="img/forte.jpg" alt="Café Forte">
+                <p>Café Forte</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 2 -->
+            <div class="item" data-id="2" data-nome="Café Coado" data-preco="12.00">
+                <img src="img/coado.jpg" alt="Café Coado">
+                <p>Café Coado</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 3 -->
+            <div class="item" data-id="3" data-nome="Espresso" data-preco="18.00">
+                <img src="img/espresso.jpg" alt="Espresso">
+                <p>Espresso</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 4 -->
+            <div class="item" data-id="4" data-nome="Pingado" data-preco="14.00">
+                <img src="img/pingato.jpg" alt="Pingado">
+                <p>Pingado</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 5 -->
+            <div class="item" data-id="5" data-nome="Caramelo Macchiato" data-preco="22.00">
+                <img src="img/caramelo.jpg" alt="Caramelo Macchiato">
+                <p>Caramelo Macchiato</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 6 -->
+            <div class="item" data-id="6" data-nome="Americano" data-preco="20.00">
+                <img src="img/americano.jpg" alt="Americano">
+                <p>Americano</p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const LOCAL_STORAGE_KEY = "carrinho";
+
+            // Obtém os produtos do carrinho
+            function obterCarrinho() {
+                return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+            }
+
+            // Salva os produtos no carrinho
+            function salvarCarrinho(carrinho) {
+                localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(carrinho));
+            }
+
+            // Adiciona um produto ao carrinho
+            function adicionarAoCarrinho(produto) {
+                const carrinho = obterCarrinho();
+
+                // Verifica se o produto já está no carrinho
+                const produtoExistente = carrinho.find(item => item.id === produto.id);
+                if (produtoExistente) {
+                    produtoExistente.quantidade += 1;
+                } else {
+                    carrinho.push({ ...produto, quantidade: 1 });
+                }
+
+                salvarCarrinho(carrinho);
+                alert("Produto adicionado ao carrinho!");
+                // Redireciona para a página carrinho.html
+                window.location.href = 'carrinho.html';
+            }
+
+            // Evento de clique nos botões "Adicionar ao Carrinho"
+            document.querySelectorAll(".add-to-cart").forEach(botao => {
+                botao.addEventListener("click", () => {
+                    const produtoElement = botao.parentElement;
+                    const produto = {
+                        id: produtoElement.dataset.id,
+                        nome: produtoElement.dataset.nome,
+                        preco: parseFloat(produtoElement.dataset.preco),
+                    };
+
+                    adicionarAoCarrinho(produto);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

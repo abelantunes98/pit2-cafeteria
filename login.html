@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <img src="img/tela2.jpeg" class="left-login-image" alt="Img cafe">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">E-mail</label>
+                    <input type="text" id="email" name="e-mail" placeholder="e-mail" required>
+                </div>
+                <div class="textfield">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                </div>
+                <button type="submit" id="loginBtn" class="btn-login">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Obtém os valores dos campos de e-mail e senha
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Verifica se os campos estão preenchidos
+            if (!email || !password) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            // Se os campos estiverem preenchidos, redireciona para a página de produtos
+            window.location.href = "produtos.html"; // Redirecionamento para a página de produtos (ou qualquer outra página)
+        });
+    </script>
+
+</body>
+
+</html>

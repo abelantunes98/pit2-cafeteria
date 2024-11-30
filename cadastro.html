@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Cadastro de usuario</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="image">
+            <img src="img/74108b6277d56dda67007dad7aa29916-removebg-preview (1).png" alt="Imagem 1">
+        </div>
+        <div class="form">
+            <form id="registrationForm" action="#" method="POST">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastro de usuario</h1>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="text" name="email" autocomplete="given-name"
+                            placeholder="Digite seu E-mail" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="lastname">CPF</label>
+                        <input id="cpf" type="text" name="cpf" autocomplete="family-name"
+                            placeholder="Digite seu CPF" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" name="password" autocomplete="new-password"
+                            placeholder="Digite sua senha" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="confirmPassword">Confirme sua Senha</label>
+                        <input id="confirmPassword" type="password" name="confirmPassword" autocomplete="new-password"
+                            placeholder="Digite sua senha novamente" required>
+                    </div>
+                </div>
+
+                <div class="continue-button">
+                    <button type="submit" id="submitBtn">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            // Verificar se as senhas coincidem
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("As senhas não coincidem.");
+                return;
+            }
+
+            // Se as senhas coincidirem, redireciona para a página de login
+            window.location.href = "login.html"; // Redirecionamento para a página de login
+        });
+    </script>
+
+</body>
+
+</html>
